@@ -1,7 +1,11 @@
 # spring-book-store-inventory-system
 spring-book-store-inventory-system
 
+<<<<<<< HEAD
 # Project Overview
+=======
+# Project Overview  
+>>>>>>> fdd53d192b77f09f7ce7bfdf79ad65a48a538407
 The spring book store inventory system project is a basic Java application that demonstrates a book inventory system. It utilizes object-oriented programming principles and simulates the interactions between customers, books and suppliers. Also it uses maven and spring framework.
 
 # Features
@@ -35,6 +39,7 @@ The spring book store inventory system project is a basic Java application that 
   * Customer.java
   * Supplier.java
 * com.amit.book.inventory.service: includes all the service classes and interfaces:
+<<<<<<< HEAD
   * BookService.java
   * CustomerService.java
   * SupplierService.java
@@ -49,6 +54,22 @@ The spring book store inventory system project is a basic Java application that 
   * SupplierRepository.java
 * com.amit.book.inventory.util: includes all the util classes:
   * SpringContextUtil.java
+=======
+   * BookService.java
+   * CustomerService.java
+   * SupplierService.java
+   * BookServiceInterface.java
+   * CustomerServiceInterface.java
+   * SupplierServiceInterface.java
+   * ConnectionService.java
+   * LibraryService.java
+* com.amit.book.inventory.repository: includes all the repository classes:
+   * BookRepository.java
+   * CustomerRepository.java
+   * SupplierRepository.java
+* com.amit.book.inventory.util: includes all the util classes:
+   * SpringContextUtil.java
+>>>>>>> fdd53d192b77f09f7ce7bfdf79ad65a48a538407
 
 # Class Diagram
 
