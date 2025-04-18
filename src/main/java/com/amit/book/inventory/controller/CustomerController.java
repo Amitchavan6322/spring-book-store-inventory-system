@@ -5,10 +5,6 @@ import com.amit.book.inventory.exception.InvalidBookNameException;
 import com.amit.book.inventory.exception.InvalidBookPriceException;
 import com.amit.book.inventory.service.CustomerService;
 import com.amit.book.inventory.util.SpringContextUtil;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.Scanner;

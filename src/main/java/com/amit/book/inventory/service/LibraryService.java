@@ -1,11 +1,10 @@
 package com.amit.book.inventory.service;
 
-import com.amit.book.inventory.model.Book;
 import com.amit.book.inventory.exception.InvalidBookIDException;
+import com.amit.book.inventory.model.Book;
 
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Map;
 
 public abstract class LibraryService {
 

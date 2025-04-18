@@ -3,20 +3,11 @@ package com.amit.book.inventory.service;
 import com.amit.book.inventory.exception.InvalidBookIDException;
 import com.amit.book.inventory.exception.InvalidBookNameException;
 import com.amit.book.inventory.exception.InvalidBookPriceException;
-import com.amit.book.inventory.model.Customer;
 import com.amit.book.inventory.model.Supplier;
-import com.amit.book.inventory.repository.CustomerRepository;
 import com.amit.book.inventory.repository.SupplierRepository;
 import com.amit.book.inventory.util.SpringContextUtil;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Scanner;
 
 public class SupplierService implements SupplierServiceInterface {
