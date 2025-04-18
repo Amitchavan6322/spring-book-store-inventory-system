@@ -7,6 +7,11 @@ import com.amit.book.inventory.model.Customer;
 import com.amit.book.inventory.model.Supplier;
 import com.amit.book.inventory.repository.CustomerRepository;
 import com.amit.book.inventory.repository.SupplierRepository;
+import com.amit.book.inventory.util.SpringContextUtil;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -18,11 +23,11 @@ public class SupplierService implements SupplierServiceInterface {
 
     private Scanner scanner = new Scanner(System.in);
 
-    private static final SupplierRepository supplierRepository = new SupplierRepository();
+    private static final SupplierRepository supplierRepository = SpringContextUtil.getContext().getBean("supplierRepository", SupplierRepository.class);
 
     public void acceptingSupplierInfo() throws SQLException {
 
-        Supplier supplier = new Supplier();
+        Supplier supplier = SpringContextUtil.getContext().getBean("supplier", Supplier.class);
 
         System.out.println("Enter supplier id");
         int supplierId = Integer.parseInt(scanner.nextLine());
@@ -65,7 +70,7 @@ public class SupplierService implements SupplierServiceInterface {
     }
 
     public void updateSupplierInfo(int supplier_Id) throws InvalidBookNameException, SQLException, InvalidBookIDException, InvalidBookPriceException {
-        Supplier supplier = new Supplier();
+        Supplier supplier = SpringContextUtil.getContext().getBean("supplier", Supplier.class);
         supplier.setSupplierID(supplier_Id);
 
         System.out.println("Enter new supplier name");

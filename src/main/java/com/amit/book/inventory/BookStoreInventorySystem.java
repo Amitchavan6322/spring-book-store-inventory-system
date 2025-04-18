@@ -6,6 +6,7 @@ import com.amit.book.inventory.controller.SupplierController;
 import com.amit.book.inventory.exception.InvalidBookIDException;
 import com.amit.book.inventory.exception.InvalidBookNameException;
 import com.amit.book.inventory.exception.InvalidBookPriceException;
+import com.amit.book.inventory.util.SpringContextUtil;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -15,9 +16,11 @@ public class BookStoreInventorySystem {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws InvalidBookIDException, SQLException, InvalidBookNameException, InvalidBookPriceException {
-        BookController bookController = new BookController();
-        CustomerController customerController = new CustomerController();
-        SupplierController supplierController = new SupplierController();
+
+
+        BookController bookController = SpringContextUtil.getContext().getBean("bookController", BookController.class);
+        CustomerController customerController = SpringContextUtil.getContext().getBean("customerController", CustomerController.class);
+        SupplierController supplierController = SpringContextUtil.getContext().getBean("supplierController", SupplierController.class);
 
         int option = 0;
         do {
