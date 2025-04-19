@@ -6,25 +6,26 @@ import com.amit.book.inventory.exception.InvalidBookPriceException;
 import com.amit.book.inventory.model.Customer;
 import com.amit.book.inventory.repository.CustomerRepository;
 import com.amit.book.inventory.util.SpringContextUtil;
+import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+@AllArgsConstructor
 public class CustomerService implements CustomerServiceInterface {
 
-    private HashMap<Integer, Customer> customers = new HashMap<>();
-    private Scanner scanner = new Scanner(System.in);
+    private static HashMap<Integer, Customer> customers = new HashMap<>();
+    private static final Scanner scanner = new Scanner(System.in);
 
-    private static final CustomerRepository customerRepository = SpringContextUtil.getContext().getBean("customerRepository",CustomerRepository.class);
+    private final CustomerRepository customerRepository;
 
     public void acceptCustomerInfo() throws SQLException {
 
         boolean value = customerRepository.isCustomerTableEmpty();
         if (value) System.out.println("No Customer present in the inventory.");
 
-        Customer customer = SpringContextUtil.getContext().getBean("customer", Customer.class);
-
+        Customer customer = Customer.builder().build();
         System.out.println("Enter customer id");
         int customerId = Integer.parseInt(scanner.nextLine());
         customer.setCustomerID(customerId);
@@ -66,7 +67,7 @@ public class CustomerService implements CustomerServiceInterface {
     }
 
     public void updateCustomerInfo(int customer_Id) throws InvalidBookNameException, SQLException, InvalidBookIDException, InvalidBookPriceException {
-        Customer customer = SpringContextUtil.getContext().getBean("customer", Customer.class);
+        Customer customer = Customer.builder().build();
         customer.setCustomerID(customer_Id);
 
         System.out.println("Enter new customer name");

@@ -6,19 +6,19 @@ import com.amit.book.inventory.exception.InvalidBookPriceException;
 import com.amit.book.inventory.model.Supplier;
 import com.amit.book.inventory.repository.SupplierRepository;
 import com.amit.book.inventory.util.SpringContextUtil;
+import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-
+@AllArgsConstructor
 public class SupplierService implements SupplierServiceInterface {
 
-    private Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
-    private static final SupplierRepository supplierRepository = SpringContextUtil.getContext().getBean("supplierRepository", SupplierRepository.class);
-
+    private final SupplierRepository supplierRepository;
     public void acceptingSupplierInfo() throws SQLException {
 
-        Supplier supplier = SpringContextUtil.getContext().getBean("supplier", Supplier.class);
+        Supplier supplier = Supplier.builder().build();
 
         System.out.println("Enter supplier id");
         int supplierId = Integer.parseInt(scanner.nextLine());
@@ -61,7 +61,7 @@ public class SupplierService implements SupplierServiceInterface {
     }
 
     public void updateSupplierInfo(int supplier_Id) throws InvalidBookNameException, SQLException, InvalidBookIDException, InvalidBookPriceException {
-        Supplier supplier = SpringContextUtil.getContext().getBean("supplier", Supplier.class);
+        Supplier supplier = Supplier.builder().build();
         supplier.setSupplierID(supplier_Id);
 
         System.out.println("Enter new supplier name");

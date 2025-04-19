@@ -4,61 +4,39 @@
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-
-    <bean id="supplier" class="com.amit.book.inventory.model.Supplier" scope="prototype">
-        <!--<property name="supplierID" value="11" />
-        <property name="supplierName" value="Shreyas" />
-        <property name="supplierAddress" ref="Flat 101, xyz, Pune" />
-        <property name="supplierContact" ref="9955776655" />
-        <property name="supplierEmailId" ref="shreyas@gmail.com" />-->
+    <bean id="bookRepository" class="com.amit.book.inventory.repository.BookRepository">
     </bean>
 
-    <bean id="customer" class="com.amit.book.inventory.model.Customer" scope="prototype">
-       <!-- <property name="customerID" value="11" />
-        <property name="customerName" value="Ashish" />
-        <property name="customerAddress" ref="Flat 101, xyz, Pune" />
-        <property name="customerContact" ref="9988776655" />
-        <property name="customerEmailID" ref="ashish@gmail.com" />-->
+    <bean id="bookService" class="com.amit.book.inventory.service.BookService">
+        <constructor-arg ref="bookRepository"/>
     </bean>
 
-    <bean id="book" class="com.amit.book.inventory.model.Book" scope="prototype">
-        <!--<property name="bookId" value="11" />
-        <property name="name" value="Java Programming" />
-        <property name="author" value="John" />
-        <property name="publisher" value="TechBooks" />
-        <property name="noOfCopies" value="10" />
-        <property name="category">
-            <value>ACADEMIC</value> &lt;!&ndash; This is the enum value &ndash;&gt;
-        </property>
-        <property name="storeLocation" value="Shelf A1" />
-        <property name="price" value="500" />-->
+    <bean id="bookController" class="com.amit.book.inventory.controller.BookController">
+        <constructor-arg ref="bookService"/>
     </bean>
 
-    <bean id="supplierService" class="com.amit.book.inventory.service.SupplierService" scope="prototype">
+
+    <bean id="customerRepository" class="com.amit.book.inventory.repository.CustomerRepository">
     </bean>
 
-    <bean id="customerService" class="com.amit.book.inventory.service.CustomerService" scope="prototype">
+    <bean id="customerService" class="com.amit.book.inventory.service.CustomerService">
+        <constructor-arg ref="customerRepository"/>
     </bean>
 
-    <bean id="bookService" class="com.amit.book.inventory.service.BookService" scope="prototype">
+    <bean id="customerController" class="com.amit.book.inventory.controller.CustomerController">
+        <constructor-arg ref="customerService"/>
     </bean>
 
-    <bean id="bookRepository" class="com.amit.book.inventory.repository.BookRepository" scope="prototype">
+
+    <bean id="supplierRepository" class="com.amit.book.inventory.repository.SupplierRepository">
     </bean>
 
-    <bean id="customerRepository" class="com.amit.book.inventory.repository.CustomerRepository" scope="prototype">
+    <bean id="supplierService" class="com.amit.book.inventory.service.SupplierService">
+        <constructor-arg ref="supplierRepository"/>
     </bean>
 
-    <bean id="supplierRepository" class="com.amit.book.inventory.repository.SupplierRepository" scope="prototype">
-    </bean>
-
-    <bean id="bookController" class="com.amit.book.inventory.controller.BookController" scope="prototype">
-    </bean>
-
-    <bean id="customerController" class="com.amit.book.inventory.controller.CustomerController" scope="prototype">
-    </bean>
-
-    <bean id="supplierController" class="com.amit.book.inventory.controller.SupplierController" scope="prototype">
+    <bean id="supplierController" class="com.amit.book.inventory.controller.SupplierController">
+        <constructor-arg ref="supplierService"/>
     </bean>
 
 </beans>

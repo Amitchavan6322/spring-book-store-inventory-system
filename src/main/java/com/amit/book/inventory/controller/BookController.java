@@ -5,18 +5,21 @@ import com.amit.book.inventory.exception.InvalidBookNameException;
 import com.amit.book.inventory.exception.InvalidBookPriceException;
 import com.amit.book.inventory.service.BookService;
 import com.amit.book.inventory.util.SpringContextUtil;
+import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
+@AllArgsConstructor
 public class BookController {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    private final BookService bookService;
+
+
     public void run() throws SQLException, InvalidBookNameException, InvalidBookIDException, InvalidBookPriceException {
         int option = 0;
-
-        BookService bookService = SpringContextUtil.getContext().getBean("bookService", BookService.class);
 
         do {
             System.out.println("Please select option from below list :");

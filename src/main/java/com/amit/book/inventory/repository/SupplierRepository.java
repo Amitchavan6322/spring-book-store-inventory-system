@@ -2,9 +2,10 @@ package com.amit.book.inventory.repository;
 
 import com.amit.book.inventory.model.Supplier;
 import com.amit.book.inventory.service.ConnectionService;
+import lombok.AllArgsConstructor;
 
 import java.sql.*;
-
+@AllArgsConstructor
 public class SupplierRepository {
 
     private static Connection connection = null;

@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-
+@AllArgsConstructor
 public class SupplierController {
 
     private static final Scanner scanner = new Scanner(System.in);
-
+    private final SupplierService supplierService;
     public void run() throws SQLException {
         int option = 0;
-        SupplierService supplierService = new SupplierService();
+
         do {
             System.out.println("Please select option from below list :");
             System.out.println("1. Fill supplier information");

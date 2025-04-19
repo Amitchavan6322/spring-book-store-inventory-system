@@ -5,17 +5,18 @@ import com.amit.book.inventory.exception.InvalidBookNameException;
 import com.amit.book.inventory.exception.InvalidBookPriceException;
 import com.amit.book.inventory.service.CustomerService;
 import com.amit.book.inventory.util.SpringContextUtil;
+import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-
+@AllArgsConstructor
 public class CustomerController {
 
     private static final Scanner scanner = new Scanner(System.in);
-
+    private final CustomerService customerService;
     public void run() throws SQLException {
         int option = 0;
-        CustomerService customerService = SpringContextUtil.getContext().getBean("customerService", CustomerService.class);
+
         do {
             System.out.println("Please select option from below list :");
             System.out.println("1. Fill the customer information");

@@ -7,25 +7,26 @@ import com.amit.book.inventory.model.Book;
 import com.amit.book.inventory.model.BookCategory;
 import com.amit.book.inventory.repository.BookRepository;
 import com.amit.book.inventory.util.SpringContextUtil;
+import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 
-
+@AllArgsConstructor
 public class BookService extends LibraryService implements BookServiceInterface {
 
-    private Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
-    private static final BookRepository bookRepository = SpringContextUtil.getContext().getBean("bookRepository", BookRepository.class);
+    private  final BookRepository bookRepository;
 
     public void acceptingBookInfo() throws InvalidBookIDException, InvalidBookNameException, InvalidBookPriceException, SQLException {
 
 
             boolean value = bookRepository.isBookTableEmpty();
             if (value) System.out.println("No books currently in the inventory.");
-
-        Book book = SpringContextUtil.getContext().getBean("book", Book.class);
+            
+        Book book = Book.builder().build();
         System.out.println("Enter book id");
         int bookId;
         try {
@@ -113,7 +114,8 @@ public class BookService extends LibraryService implements BookServiceInterface 
 
 
     public void updateBookInfo(int book_Id) throws InvalidBookNameException, SQLException, InvalidBookIDException, InvalidBookPriceException {
-        Book book = SpringContextUtil.getContext().getBean("book", Book.class);
+        //Book book = SpringContextUtil.getContext().getBean("book", Book.class);
+        Book book = Book.builder().build();
         book.setBookId(book_Id);
 
         System.out.println("Enter new book name");
